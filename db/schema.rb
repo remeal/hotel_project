@@ -10,10 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_26_152905) do
+ActiveRecord::Schema.define(version: 2020_03_08_164130) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "eatings", force: :cascade do |t|
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.string "link"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.integer "number"
+    t.bigint "photo_id", null: false
+    t.text "description"
+    t.integer "quantity"
+    t.integer "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["photo_id"], name: "index_rooms_on_photo_id"
+  end
 
   create_table "test", force: :cascade do |t|
     t.string "test_column"
@@ -25,4 +48,5 @@ ActiveRecord::Schema.define(version: 2020_02_26_152905) do
     t.string "test_col"
   end
 
+  add_foreign_key "rooms", "photos"
 end
