@@ -2,12 +2,8 @@
 
 one:
   number: 1
-  photo: one
-  description: MyText
-  quantity: MyString
+  type: one
 
 two:
   number: 1
-  photo: two
-  description: MyText
-  quantity: MyString
+  type: two

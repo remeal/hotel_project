@@ -1,3 +1,3 @@
 class Room < ApplicationRecord
-  belongs_to :photo
+  belongs_to :type
 end

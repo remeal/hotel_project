@@ -2,6 +2,12 @@
 
 one:
   link: MyString
+  description: MyText
+  price: 1
+  quantity: 1
 
 two:
   link: MyString
+  description: MyText
+  price: 1
+  quantity: 1

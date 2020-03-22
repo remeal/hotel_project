@@ -2,6 +2,8 @@
 
 one:
   description: MyText
+  price: 1
 
 two:
   description: MyText
+  price: 1
