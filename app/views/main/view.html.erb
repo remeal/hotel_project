@@ -1,0 +1,11 @@
+<body>
+     <div>
+       Описание: <%= @types.description %>
+       <%= image_tag ('/assets/' + @types.link + '.jpg'), class: 'image'%>
+       Цена : <%= @types.price %>/сут.
+       Даты: <%= @date_in %> - <%= @date_out %>
+       <%= form_tag(booking_path, :method => "get", class: "start-booking") do %>
+       <%= button_tag("Забронировать", name: "type_value") %>
+       <% end %>
+     </div>
+</body>

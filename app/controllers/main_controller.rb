@@ -1,7 +1,11 @@
 class MainController < ApplicationController
+  before_action :authenticate_user!, only: [:booking]
   def index; end
+
   def search
     arr_type_id = []
+    cookies[:date_in] = params[:date_in]
+    cookies[:date_out] = params[:date_out]
     check = data_check(params[:data_in],params[:data_out],params[:search])
     if check.nil?
       @types = nil
@@ -13,6 +17,7 @@ class MainController < ApplicationController
       @types = Type.where(id: arr_type_id)
     end
   end
+
   def data_check(data_in, data_out, quantity)
     arr_empty = []
     arr_all = Room.where(number: Type.where(quantity: quantity))
@@ -33,7 +38,13 @@ class MainController < ApplicationController
       arr_empty
     end
   end
+
+  def view
+    @types = Type.find_by_price(params[:type_value])
+    @date_in = cookies[:date_in]
+    @date_out = cookies[:date_out]
+  end
+
   def booking
-    @types = params[:value]
   end
 end
