@@ -1,0 +1,19 @@
+<body>
+<%= form_tag(search_path, :method => "get", class: "start-search") do %>
+  <input type="text" name="search" id="Поиск" placeholder="Поиск"/>
+  <input type="date" name="date_in" id="date_in" placeholder="Дата заезда"/>
+  <input type="date" name="date_out" id="daye_out" placeholder="Дата выезда"/>
+  <input type="submit" name="commit" value="Найти" class = "btn btn-primary"/>
+<% end %>
+<h5> Результаты по вашему запросу</h5>
+<% @types.each do |type| %>
+  <div>
+    <%= type.description %>
+    <%= image_tag ('/assets/' + type.link + '.jpg'), class: 'image'%>
+    <%= type.price %>
+    <%= form_tag(booking_path, :method => "get", class: "start-booking") do %>
+      <%= submit_tag('Забронировать', class: 'booking-button', name: 'type_value', value: type) %>
+    <%end %>
+  </div>
+<% end %>
+</body>

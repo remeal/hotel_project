@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sum: 1
+  room: one
+  date_in: 2020-03-22
+  date_out: 2020-03-22
+  number: 1
+  eating: one
+  phone: MyString
+  user: one
+  name: MyString
+
+two:
+  sum: 1
+  room: two
+  date_in: 2020-03-22
+  date_out: 2020-03-22
+  number: 1
+  eating: two
+  phone: MyString
+  user: two
+  name: MyString

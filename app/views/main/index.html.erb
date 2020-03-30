@@ -1,9 +1,8 @@
 <body>
-<%= image_tag ('/assets/' + @photo.to_s + '.jpg'), class: 'image'%>
 <%= form_tag(search_path, :method => "get", class: "start-search") do %>
   <input type="text" name="search" id="Поиск" placeholder="Поиск"/>
-  <input type="date" name="Дата заезда" id="Дата заезда" placeholder="Дата заезда"/>
-  <input type="date" name="Дата выезда" id="Дата выезда" placeholder="Дата выезда"/>
+  <input type="date" name="date_in" id="date_in" placeholder="Дата заезда"/>
+  <input type="date" name="date_out" id="date_out" placeholder="Дата выезда"/>
   <input type="submit" name="commit" value="Найти" class = "btn btn-primary"/>
 <% end %>
 </body>
