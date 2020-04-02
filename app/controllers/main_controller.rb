@@ -4,8 +4,8 @@ class MainController < ApplicationController
 
   def search
     arr_type_id = []
-    cookies[:date_in] = params[:date_in]
-    cookies[:date_out] = params[:date_out]
+    flash[:date_in] = params[:date_in]
+    flash[:date_out] = params[:date_out]
     check = data_check(params[:data_in],params[:data_out],params[:search])
     if check.nil?
       @types = nil
@@ -20,7 +20,7 @@ class MainController < ApplicationController
 
   def data_check(data_in, data_out, quantity)
     arr_empty = []
-    arr_all = Room.where(number: Type.where(quantity: quantity))
+    arr_all = Room.where(type_id: Type.where(quantity: quantity))
     arr_all.each do |arr|
       OccupiedDate.find_by_room_id(arr.number).nil? ? arr_empty.push(arr.number) : nil
     end
@@ -40,11 +40,14 @@ class MainController < ApplicationController
   end
 
   def view
-    @types = Type.find_by_price(params[:type_value])
-    @date_in = cookies[:date_in]
-    @date_out = cookies[:date_out]
+    @types = Type.find_by_id(params[:type_value])
+    @date_in = flash[:date_in]
+    @date_out = flash[:date_out]
+    @new
   end
 
   def booking
+    @type = Type.find_by_id(params[:type_value])
+    @eating = params[:handling]
   end
 end

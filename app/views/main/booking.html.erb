@@ -1,0 +1,8 @@
+<body>
+Бронирование номера на <%= @date_in %> - <%= @date_out %>
+Номер:
+<%=@type.link %>
+<%= image_tag ('/assets/' + @type.link + '.jpg'), class: 'image'%>
+Стоимость за
+<%=@eating %>
+</body>

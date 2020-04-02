@@ -12,7 +12,7 @@
     <%= image_tag ('/assets/' + type.link + '.jpg'), class: 'image'%>
     <%= type.price %>
     <%= form_tag(view_path, :method => "get", class: "start-booking") do %>
-      <%= button_tag("Забронировать", name: "type_value", value: type.price) %>
+      <%= button_tag("Забронировать", name: "type_value", value: type.id) %>
     <% end %>
   </div>
 <% end %>
