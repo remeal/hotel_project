@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   get 'main/search' => 'main#search', :as => 'search'
   get 'main/booking' => 'main#booking', :as => 'booking'
   get 'main/view'  => 'main#view',  :as =>  'view'
+  get 'main/success' => 'main#success', :as => 'success'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

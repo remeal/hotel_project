@@ -43,11 +43,24 @@ class MainController < ApplicationController
     @types = Type.find_by_id(params[:type_value])
     @date_in = flash[:date_in]
     @date_out = flash[:date_out]
-    @new
+    flash[:date_in] = @date_in
+    flash[:date_out] = @date_out
   end
 
   def booking
     @type = Type.find_by_id(params[:type_value])
-    @eating = params[:handling]
+    @eating = Eating.find_by_description(params[:handling])
+    @date_in = flash[:date_in]
+    @date_out = flash[:date_out]
+    @sum = sum(@date_in, @date_out, @type.price, @eating.price)
+  end
+
+  def success
+
+  end
+
+  def sum(datein, dateout, priceroom, priceeat)
+    days = (Time.parse(dateout) - Time.parse(datein))/86400
+    (priceroom + priceeat) * days
   end
 end

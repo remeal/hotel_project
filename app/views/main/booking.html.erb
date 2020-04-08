@@ -1,8 +1,16 @@
 <body>
+<div>
 Бронирование номера на <%= @date_in %> - <%= @date_out %>
 Номер:
 <%=@type.link %>
+<%=@type.price %>
 <%= image_tag ('/assets/' + @type.link + '.jpg'), class: 'image'%>
 Стоимость за
-<%=@eating %>
+<%=@eating.description %>
+<%=@eating.price %> руб/сут
+Итого: <%= @sum%> руб.
+</div>
+<%= form_tag(success_path, :method => "get", class: "start-booking") do %>
+  <%= button_tag("Подтвердить бронирование", name: "type_value", value: [@type.id, @eating.id]) %>
+<% end %>
 </body>
