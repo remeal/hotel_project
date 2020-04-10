@@ -1,5 +1,5 @@
 class MainController < ApplicationController
-  before_action :authenticate_user!, only: [:booking]
+  before_action :authenticate_user!, only: [:booking, :success]
   def index; end
 
   def search
@@ -43,19 +43,31 @@ class MainController < ApplicationController
     @types = Type.find_by_id(params[:type_value])
     @date_in = flash[:date_in]
     @date_out = flash[:date_out]
-    flash[:date_in] = @date_in
-    flash[:date_out] = @date_out
   end
 
   def booking
-    @type = Type.find_by_id(params[:type_value])
+    @type = Type.find_by_id(params[:type_value].split(' ')[0])
     @eating = Eating.find_by_description(params[:handling])
-    @date_in = flash[:date_in]
-    @date_out = flash[:date_out]
+    @date_in = params[:type_value].split(' ')[1]
+    @date_out = params[:type_value].split(' ')[2]
     @sum = sum(@date_in, @date_out, @type.price, @eating.price)
   end
 
   def success
+    date_in = params[:type_value].split(' ')[2]
+    date_out = params[:type_value].split(' ')[3]
+    eating = params[:type_value].split(' ')[1]
+    phone = params[:phone]
+    sum = params[:type_value].split(' ')[4]
+    room = data_check(date_in, date_out, Type.find_by_id(params[:type_value].split('')[0])[:quantity])[0]
+    Booking.create(sum: sum, room: Room.find_by_number(room), date_in: date_in, date_out: date_out, eating: Eating.find_by_id(eating), phone: phone, user: User.find_by_email(current_user.email), name: User.find_by_name(current_user.name)[:name])
+    days = (Time.parse(date_out) - Time.parse(date_in))/86400
+    for i in 0..days
+      OccupiedDate.create(room: Room.find_by_id(room), date: (Time.parse(date_in) + 86400 * i))
+    end
+  end
+
+  def room_check(id)
 
   end
 

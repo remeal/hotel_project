@@ -6,7 +6,7 @@
        Даты: <%= @date_in %> - <%= @date_out %>
        Количество человек в номере: <%= @types.quantity %>
        <%= form_tag(booking_path, :method => "get", class: "start-booking") do %>
-       <%= button_tag("Забронировать", name: "type_value", value: @types.id) %>
+       <%= button_tag("Забронировать", name: "type_value", value: [@types.id, @date_in, @date_out]) %>
          Выберите, пожалуйста, питание на время проживания:
          <%= select_tag "handling", options_for_select(['Все включено', 'Шведский стол включен, бар платный',
                                                         'Обед, ужин и напитки включены', 'Обед и ужин включены, бар платный',

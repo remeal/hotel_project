@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 2020_04_02_220216) do
     t.bigint "room_id", null: false
     t.date "date_in"
     t.date "date_out"
-    t.integer "number"
     t.bigint "eating_id", null: false
     t.string "phone"
     t.bigint "user_id", null: false
