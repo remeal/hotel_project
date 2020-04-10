@@ -1,0 +1,6 @@
+<body>
+<%= form_tag(add_new_guests_path, :method => "get", class: "add-guests") do %>
+  <input type="text" name="add_guests" id="add_guests" placeholder="Введите номер бронирования"/>
+  <%= button_tag("Поиск") %>
+<% end %>
+</body>

@@ -67,12 +67,10 @@ class MainController < ApplicationController
     end
   end
 
-  def room_check(id)
-
-  end
-
   def sum(datein, dateout, priceroom, priceeat)
     days = (Time.parse(dateout) - Time.parse(datein))/86400
     (priceroom + priceeat) * days
   end
+
+
 end

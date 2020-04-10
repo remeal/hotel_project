@@ -43,3 +43,4 @@ Eating.create(description: 'Завтрак, обед и напитки вклю�
 Eating.create(description: 'Завтрак и напитки включены', price: 300)
 Eating.create(description: 'Завтрак включен, бар платный', price: 200)
 Eating.create(description: 'Включены только напитки', price: 100)
+User.create(email: 'admin@admin.ru', password: 'yaadmin', admin: true, name: 'admin')
