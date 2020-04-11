@@ -1,29 +1,28 @@
 <body>
+
 <%= form_for(success_to_add_path, :method => "get", class: "add-guests") do |f| %>
   <%for i in 1..@booking %>
-
   <div class="field">
     <%= f.label :surname%><br />
-    <%= f.text_field :surname, autofocus: true, id: 'surname' + i.to_s %>
+    <%= f.text_field :surname.to_s + i.to_s, autofocus: true, id: 'surname' + i.to_s%>
   </div>
 
   <div class="field">
     <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, id: 'name' + i.to_s%>
+    <%= f.text_field :name.to_s + i.to_s, autofocus: true, id: 'name' + i.to_s%>
   </div>
 
   <div class="field">
     <%= f.label :patronymic %><br />
-    <%= f.text_field :patronymic, autofocus: true, id: 'patronymic' + i.to_s %>
+    <%= f.text_field :patronymic.to_s + i.to_s, autofocus: true, id: 'patronymic' + i.to_s %>
   </div>
 
   <div class="field">
     <%= f.label :passport %><br />
-    <%= f.number_field :passport, id: 'passport' + i.to_s %>
+    <%= f.number_field :passport.to_s + i.to_s, id: 'passport' + i.to_s %>
   </div>
   <% end %>
-  <%= button_tag("Зарегистрировать", name: "type_value", value: @booking) %>
+  <%= button_tag("Зарегистрировать", name: "type_value", value: [ @booking] ) %>
   <% end %>
-
 
 </body>
