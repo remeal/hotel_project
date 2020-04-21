@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 # Create Type model
+require 'faker'
 Type.create(link: "Апартаменты", description: "Апартаменты это роскошный комфортабельный номер, состоящий из гостиной, двух спален, ванной комнаты и гостевого туалета. В номере есть стол с 6 мягкими стульями, журнальный стол,сервант, холодтльник, набор посуды.",
              price: 11270, quantity: 6)
 Type.create(link: "Бизнес", description: "Из окна этого светлого номера бизнес-класса, оснащенного современной удобной мебелью, открывается панорамный вид на город. Тщательно подобранный интерьер создает атмосферу уюта и комфорта для плодотворной работы или беспечного отдыха.В числе удобств — телевизор с плоским экраном, кондиционер и холодильник. Собственная ванная комната укомплектована феном и бесплатными туалетными принадлежностями.",
@@ -44,3 +45,7 @@ Eating.create(description: 'Завтрак и напитки включены', 
 Eating.create(description: 'Завтрак включен, бар платный', price: 200)
 Eating.create(description: 'Включены только напитки', price: 100)
 User.create(email: 'admin@admin.ru', password: 'yaadmin', admin: true, name: 'admin')
+
+100000.times do
+  User.create(name: Faker::Internet.username, email: Faker::Internet.email, password: Faker::Internet.password(min_length:6))
+end
