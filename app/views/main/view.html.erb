@@ -1,18 +1,27 @@
 <body>
      <div>
+       <div class="columns">
+       <%= @types.link %><br/>
        Описание: <%= @types.description %>
+       </div>
+       <div class="columns">
+         <div class="column is-one-third">
        <%= image_tag ('/assets/' + @types.link + '.jpg'), class: 'image'%>
-       Цена : <%= @types.price %>/сут.
-       Даты: <%= @date_in %> - <%= @date_out %>
-       Количество человек в номере: <%= @types.quantity %>
+         </div>
+         <div class="column is-two-thirds">
+       Цена : <%= @types.price %>/сут.<br/>
+       Даты: <%= @date_in %> - <%= @date_out %><br/>
+       Количество человек в номере: <%= @types.quantity %><br/>
        <%= form_tag(booking_path, :method => "get", class: "start-booking") do %>
-       <%= button_tag("Забронировать", name: "type_value", value: [@types.id, @date_in, @date_out]) %>
          Выберите, пожалуйста, питание на время проживания:
          <%= select_tag "handling", options_for_select(['Все включено', 'Шведский стол включен, бар платный',
                                                         'Обед, ужин и напитки включены', 'Обед и ужин включены, бар платный',
                                                         'Завтрак, ужин и напитки включены', 'Завтрак и ужин включены, бар платный',
                                                         'Завтрак, обед и напитки включены', 'Завтрак и напитки включены',
-                                                        'Завтрак включен, бар платный', 'Включены только напитки']) %><br />
+                                                        'Завтрак включен, бар платный', 'Включены только напитки']), class: "dropdown-content" %><br/>
+             <%= button_tag("Забронировать", name: "type_value", value: [@types.id, @date_in, @date_out], class: "button is-info is-rounded") %>
        <% end %>
+         </div>
+       </div>
      </div>
 </body>

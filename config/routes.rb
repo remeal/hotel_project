@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   get 'admin/guests' => 'admin#guests', :as => 'guests'
   get 'admin/add_new_guests' => 'admin#add_new_guests', :as => 'add_new_guests'
   get 'admin/success_to_add' => 'admin#success_to_add', :as => 'success_to_add'
+  get 'main/order' => 'main#order', :as => 'order'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,0 +1,19 @@
+<body>
+<%=link_to 'На главную страницу', root_path %>
+<table>
+  <tr>
+  <th>Номер бронирования</th>
+    <th> Дата заезда</th>
+    <th> Дата выезда</th>
+    <th>Сумма заказа</th>
+  </tr>
+  <%@booking.each do |arr| %>
+  <tr>
+    <td><%=arr.id %></td>
+    <td><%=arr.date_in %></td>
+    <td><%=arr.date_out %></td>
+    <td><%=arr.sum %></td>
+  </tr>
+  <% end %>
+</table>
+</body>

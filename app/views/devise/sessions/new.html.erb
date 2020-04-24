@@ -2,17 +2,30 @@
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
-    <%= f.label :name %><br />
+    <label class="label">
+    <%= f.label :name %><br /></label>
     <%= f.text_field :name, autofocus: true %>
+    <div class="control has-icons-left has-icons-right">
+      <span class="icon is-small is-left">
+      <i class="fas fa-user"></i>
+    </span>
+    </div>
   </div>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <label class="label">
+    <%= f.label :email %><br /></label>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <div class="control has-icons-left has-icons-right">
+    <span class="icon is-small is-left">
+      <i class="fas fa-envelope"></i>
+    </span>
+  </div>
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
+    <label class="label">
+      <%= f.label :password %><br/></label>
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
 
@@ -24,7 +37,7 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "Log in" , class: "button is-info is-rounded"%>
   </div>
 <% end %>
 

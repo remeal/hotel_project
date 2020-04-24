@@ -1,4 +1,9 @@
 <body>
 Вы успешно забронировали номер:
-
+<%=@booking.date_in %>
+<%=@booking.date_out %>
+<%=Eating.find_by_id(@booking.eating)[:description] %>
+<%=@booking.sum %>
+<%=Type.find_by_link(Room.find_by_number(@booking.room)[:type_id])%>
+<%=link_to 'На главную страницу',root_path  %>
 </body>

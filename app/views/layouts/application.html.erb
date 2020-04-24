@@ -22,6 +22,8 @@
     <%= link_to t('layouts.application.exit'), destroy_user_session_path, :method => :delete %>
     <%if current_user.admin? %>
       <%= link_to 'Кабинет администратора', admin_path %>
+            <%else %>
+          <%=link_to 'Мои заказы', order_path%>
     <%end %>
   <% else %>
     <%= link_to t('layouts.application.enter'), new_user_session_path %> или <%= link_to t('layouts.application.registration'), new_user_registration_path %>

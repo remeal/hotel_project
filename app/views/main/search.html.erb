@@ -1,6 +1,9 @@
 <body>
 <%= link_to "На главную страницу", root_path %>
 <h1> Результаты по вашему запросу</h1>
+<%if @types == nil %>
+<h1> не найдены, попробуйте присмотреть номер на другие даты.</h1>
+<%else %>
 <% @types.each do |type| %>
     <h3><%= type.link %></h3>
   <div class="columns">
@@ -12,9 +15,10 @@
       Количество человек в номере: <%=type.quantity %><br/>
     <%= type.price %> руб./сут. (питание не входит в стоимость)
     <%= form_tag(view_path, :method => "get", class: "start-booking") do %>
-      <%= button_tag("Забронировать", name: "type_value", value: type.id) %>
+       <%= button_tag("Забронировать", name: "type_value", value: type.id, class: "button is-info is-rounded") %>
         </div>
       </div>
     <% end %>
 <% end %>
+<%end %>
 </body>
