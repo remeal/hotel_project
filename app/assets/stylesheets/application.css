@@ -14,3 +14,111 @@
  *= require_self
  */
 @import "bulma";
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+body{
+    font-family: 'Roboto', sans-serif;
+}
+h3{
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+}
+.navbar{
+    height: 100px;
+    background-color: white;
+}
+.navbaritem{
+    margin-left: 30px;
+}
+.button{
+    font-family: 'Roboto', sans-serif;
+    border-bottom: 4px solid royalblue;
+    color: white;
+    font-size: 14px;
+}
+.dropdown-content{
+    width: 200px;
+    font-family: 'Roboto', sans-serif;
+    border-width: 0;
+    border-radius: 20px;
+    background: #E9EFF6;
+    box-shadow: 0.4em 0.4em 5px rgba(122,122,122,0.5);
+}
+* {box-sizing: border-box;}
+.decor {
+    position: relative;
+    max-width: 400px;
+    margin: 50px auto 0;
+    background: white;
+    border-radius: 30px;
+}
+.form-inner {padding: 50px;
+background-color: white;
+    border-radius: 20px;
+margin-top: 100px;}
+.form-inner input
+ {
+    display: block;
+    width: 50%;
+    padding: 0 20px;
+    margin-bottom: 10px;
+    background: #E9EFF6;
+    line-height: 40px;
+    border-width: 0;
+    border-radius: 20px;
+    font-family: 'Roboto', sans-serif;
+    align-items: center;
+    box-shadow: 0.4em 0.4em 5px rgba(122,122,122,0.5);
+}
+.form-inner input[type="submit"] {
+    border-bottom: 4px solid royalblue;
+    color: white;
+    font-size: 14px;
+}
+.form-inner textarea {resize: none;}
+.form-inner h3 {
+    margin-top: 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    color: #707981;
+}
+h1{
+    font-family: 'Roboto', sans-serif;
+    font-size: 48px;
+}
+.notification{
+    margin-top: 10%;
+    color: #707981;
+}
+.notification>.decor{
+    position: relative;
+    max-width: 1000px;
+    margin: 50px auto 0;
+    background: white;
+    border-radius: 30px;
+}
+.notification>.decor>.form-inner{
+    padding: 0px;
+    background-color: white;
+    border-radius: 20px;
+    margin-top: 100px;
+}
+span{
+    color:  #707981;
+}
+#admin-menu >.buttons>.button {
+    margin: auto;
+    box-shadow: 0.4em 0.4em 5px rgba(122,122,122,0.5);
+}
+#button-search{
+    border-bottom: 4px solid royalblue;
+    color: white;
+    font-size: 14px;
+}
+.table{
+    margin: auto;
+}
+.alert, .notice{
+    color:  #707981;
+}

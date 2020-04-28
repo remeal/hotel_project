@@ -4,7 +4,11 @@ class AdminController < ApplicationController
   def new_guests; end
 
   def add_new_guests
-    @booking = Type.find_by_id(Room.find_by_number(Booking.find_by_id(params[:add_guests])[:room_id])[:type_id])[:quantity]
+    if (Booking.find_by_id(params[:add_guests]).nil?) || (!Guest.find_by_booking_id(params[:add_guests]).nil?)
+           @booking = nil
+    else
+      @booking = Type.find_by_id(Room.find_by_number(Booking.find_by_id(params[:add_guests])[:room_id])[:type_id])[:quantity]
+    end
     flash[:add_guests] =  params[:add_guests]
   end
 

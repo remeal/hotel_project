@@ -1,21 +1,27 @@
 <body>
-<%=link_to 'На главную страницу',root_path  %>
+<section class="hero is-primary is-fullheight-with-navbar">
+  <div class="container">
+    <div class="notification">
 <div class="columns">
-  <div class="column is-half is-offset-one-quarter">
-    <%= image_tag ('/assets/' + @type.link + '.jpg'), class: 'image'%>
-Бронирование номера на <%= @date_in %> - <%= @date_out %><br/>
+  <div class="column is-one-third">
+    <%= image_tag ('/assets/' + @type.link + '.jpg'), class: 'image'%></div>
+  <div class="column">
+    Бронирование номера на <strong><%= @date_in %></strong> - <strong><%= @date_out %><br/></strong>
 Номер:
     <%=@type.link %>
-<%=@type.price %> руб./сут.<br/>
+    <strong><%=@type.price %> руб./сут.<br/></strong>
 Стоимость за
 <%=@eating.description %>
-<%=@eating.price %> руб/сут<br/>
-Итого: <%= @sum%> руб.
+    <strong><%=@eating.price %> руб/сут<br/></strong>
+    Итого: <strong><%= @sum%> руб.</strong>
 <%= form_tag(success_path, :method => "get", class: "start-booking") do %>
       <div class="control">
-        <input class="input is-hovered" type="tel" name="phone" id="phone" placeholder="+7 (900) 123-45-67" pattern="\+7\s?[\(]{0,1}9[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}"> </div><br/>
+        <input class="input is-hovered dropdown-content" type="tel" name="phone" id="phone" placeholder="+7 (900) 123-45-67" pattern="\+7\s?[\(]{0,1}9[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}"> </div><br/>
   <%= button_tag("Подтвердить бронирование", name: "type_value", value: [@type.id, @eating.id, @date_in, @date_out, @sum], class: "button is-info is-rounded") %>
 <% end %>
   </div>
 </div>
+    </div>
+  </div>
+</section>
 </body>

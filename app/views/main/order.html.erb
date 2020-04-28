@@ -1,19 +1,26 @@
 <body>
-<%=link_to 'На главную страницу', root_path %>
-<table>
-  <tr>
-  <th>Номер бронирования</th>
-    <th> Дата заезда</th>
-    <th> Дата выезда</th>
-    <th>Сумма заказа</th>
-  </tr>
+<section class="hero is-primary is-fullheight-with-navbar">
+<h1 class="has-text-centered">Мои заказы</h1>
+  <div class="container">
+    <div class="notification">
+<table class="table is-hoverable">
   <%@booking.each do |arr| %>
   <tr>
-    <td><%=arr.id %></td>
-    <td><%=arr.date_in %></td>
-    <td><%=arr.date_out %></td>
-    <td><%=arr.sum %></td>
+    <td>
+      <h3 class="has-text-centered"><%=Type.find_by_id(Room.find_by_number(arr.room_id)[:type_id])[:link] %></h3>
+      <div class="columns">
+      <div class="column is-one-third"><%= image_tag ('/assets/' + Type.find_by_id(Room.find_by_number(arr.room_id)[:type_id])[:link] + '.jpg'), class: 'image'%></div>
+    <div class="column"><strong>Номер бронирования:  </strong><%=arr.id %></div>
+      <div class="column"><strong>Дата заезда:<br/></strong><%=arr.date_in %></div>
+      <div class="column"><strong>Дата выезда:<br/></strong><%=arr.date_out %></div>
+      <div class="column"><strong>Сумма заказа:<br/></strong><%=arr.sum %> руб/сут</div>
+    </div>
+    </td>
+    </td>
   </tr>
   <% end %>
 </table>
+    </div>
+  </div>
+</section>
 </body>

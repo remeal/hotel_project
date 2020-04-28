@@ -1,11 +1,14 @@
 <body>
-<%= link_to "На главную страницу", root_path %>
+<section class="hero is-primary is-fullheight-with-navbar">
 <h1> Результаты по вашему запросу</h1>
 <%if @types == nil %>
 <h1> не найдены, попробуйте присмотреть номер на другие даты.</h1>
 <%else %>
+<section class="section">
+  <div class="container">
+    <div class="notification">
 <% @types.each do |type| %>
-    <h3><%= type.link %></h3>
+    <h3 class="has-text-centered"><%= type.link %></h3>
   <div class="columns">
     <div class="column is-one-third">
     <%= image_tag ('/assets/' + type.link + '.jpg'), class: 'image'%>
@@ -20,5 +23,9 @@
       </div>
     <% end %>
 <% end %>
+    </div>
+  </div>
+</section>
 <%end %>
+</section>
 </body>

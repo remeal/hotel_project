@@ -11,26 +11,45 @@
   </head>
 
   <body>
-  <header>
-    <div class="columns">
-      <div class = "column is-three-quarters">Name Hotel</div>
-      <div class = "column">
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <% if user_signed_in? %>
-    <span><%=t('layouts.application.hello, ' ) %><%= current_user.name %></span>
-    <%= link_to t('layouts.application.exit'), destroy_user_session_path, :method => :delete %>
-    <%if current_user.admin? %>
-      <%= link_to 'Кабинет администратора', admin_path %>
-            <%else %>
-          <%=link_to 'Мои заказы', order_path%>
-    <%end %>
-  <% else %>
-    <%= link_to t('layouts.application.enter'), new_user_session_path %> или <%= link_to t('layouts.application.registration'), new_user_registration_path %>
-  <% end %>
+  <nav class="navbar" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbaritem" href='/'>
+        <img src="/assets/logo.png" width="100" height="100%">
+      </a>
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-end">
+      <div class="navbar-item">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <% if user_signed_in? %>
+          <div class="buttons">
+        <span>Здравствуйте, <%= current_user.name %></span>
+          </div>
+          <div class="buttons">
+        <%= link_to 'Выйти', destroy_user_session_path, :method => :delete , class: "button is-light"%>
+        <%if current_user.admin? %>
+          <%= link_to 'Кабинет администратора', admin_path, class: "button is-info" %>
+        <%else %>
+          <%=link_to 'Мои заказы', order_path, class: "button is-info"%>
+        <%end %>
+          </div>
+      <% else %>
+          <div class="buttons">
+        <%=link_to "Вход", new_user_session_path, class: "button is-light"%>
+          <%=link_to "Регистрация", new_user_registration_path, class: "button is-info"%>
+      <% end %>
+        </div>
       </div>
     </div>
+  </nav>
   <%= yield %>
-  </header>
+  <footer class="footer">
+
+  </footer>
   </body>
 </html>

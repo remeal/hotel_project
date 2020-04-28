@@ -1,12 +1,31 @@
 <body>
-<%@guests.each do |guest| %>
-<div>
-<%=guest.surname %>
-<%=guest.name %>
-<%=guest.patronymic %>
-<%=guest.password %>
-  <%= Booking.find_by_id(guest.booking_id)[:room_id]%>
-</div>
+<section class="hero is-primary is-fullheight-with-navbar">
+  <section class="section">
+    <div class="container">
+      <div class="notification">
+        <table class="table is-hoverable">
+            <tr>
+            <th>ФИО</th>
+              <th>Данные документа</th>
+              <th>Номер комнаты</th>
+              <th>Даты заезда</th>
+              <th>Дата выезда</th>
+            </tr>
+          <%@guests.each do |guest| %>
+            <tr>
+           <td><%=guest.surname %>
+            <%=guest.name %>
+            <%=guest.patronymic %></td>
+            <td><%=guest.password %></td>
+            <td><%= Booking.find_by_id(guest.booking_id)[:room_id]%></td>
+              <td><%=Booking.find_by_id(guest.booking_id)[:date_in] %></td>
+              <td><%=Booking.find_by_id(guest.booking_id)[:date_out] %></td>
+            </tr>
 <% end %>
+        </table>
 <%= link_to "Назад", admin_path %>
+      </div>
+    </div>
+  </section>
+</section>
 </body>

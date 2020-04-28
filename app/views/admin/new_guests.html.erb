@@ -1,6 +1,22 @@
 <body>
-<%= form_tag(add_new_guests_path, :method => "get", class: "add-guests") do %>
-  <input type="text" name="add_guests" id="add_guests" placeholder="Введите номер бронирования"/>
-  <%= button_tag("Поиск") %>
+<section class="hero is-primary is-fullheight-with-navbar">
+  <div class="container column is-full">
+    <div class="notification ">
+<%= form_tag(add_new_guests_path, :method => "get", class: "form-inner") do %>
+        <div class="columns">
+          <div class="column is-7 is-offset-1"><input type="number" name="add_guests" id="add_guests" placeholder="Введите номер бронирования" min="0"/></div>
+          <div class="column is-3">
+  <%= button_tag("Поиск", class: "button is-info is-rounded", id: 'button-search') %>
+          </div>
+        </div>
+        <div class="columns">
+          <div class="buttons column is-3 is-offset-5">
+            <%=link_to 'Назад', admin_path, class: "button is-info is-rounded", id: 'button-search' %>
+          </div>
+        </div>
 <% end %>
+    </div>
+    </div>
+  </div>
+</section>
 </body>

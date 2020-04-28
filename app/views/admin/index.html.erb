@@ -1,7 +1,10 @@
 <body>
-<div>
-  <%= link_to 'Зарегистрировать гостей', new_guests_path %>
-  <%= link_to 'Список жильцов', guests_path%>
-</div>
-<%= link_to "Назад", root_path %>
+<section class="hero is-primary is-fullheight-with-navbar">
+  <div class="form-inner column is-3 is-offset-4" id="admin-menu">
+  <div class="buttons">
+    <%= link_to 'Зарегистрировать гостей', new_guests_path, class: "button is-light column is is-10 is-offset-1" %></div>
+  <div class="buttons"><%= link_to 'Список жильцов', guests_path, class: "button is-light column is is-10 is-offset-1"%></div>
+      <div class="buttons"><%= link_to "Назад", root_path, class: "button is-light column is is-10 is-offset-1" %></div>
+  </div>
+</section>
 </body>
