@@ -14,6 +14,9 @@
       <div class="column"><strong>Дата заезда:<br/></strong><%=arr.date_in %></div>
       <div class="column"><strong>Дата выезда:<br/></strong><%=arr.date_out %></div>
       <div class="column"><strong>Сумма заказа:<br/></strong><%=arr.sum %> руб/сут</div>
+        <div class="column">
+          <%= button_to "Отменить бронирование", {name: "type_value", value: arr.id, controller:'main', action:'safe', remote: true},{class: "button is-info is-rounded",  id: "button-search", onclick: 'changeText()'} %>
+        </div>
     </div>
     </td>
     </td>
@@ -22,5 +25,14 @@
 </table>
     </div>
   </div>
+  <script type="text/javascript">
+      function changeText() {
+          var str = document.getElementById("button-search").value;
+          if (str === "Отменить бронирование"){
+              document.getElementById("button-search").value = "Бронирование отменено";
+              document.getElementById("button-search").disabled = true;
+          }
+      }
+  </script>
 </section>
 </body>

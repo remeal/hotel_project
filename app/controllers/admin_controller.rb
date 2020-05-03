@@ -18,7 +18,14 @@ class AdminController < ApplicationController
                    name: params[:name.to_s + i.to_s], patronymic: params[:patronymic.to_s + i.to_s], booking: Booking.find_by_id(flash[:add_guests]))
     end
   end
+
+
   def guests
-    @guests = Guest.all
+    @guests = Guest.where(leave: false)
+  end
+
+
+  def adminsafe
+    Guest.find_by_id(params[:value]).update(leave: true)
   end
 end

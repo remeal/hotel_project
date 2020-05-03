@@ -3,6 +3,7 @@
   <div class="container">
     <div class="notification">
       <h3>Вы успешно <strong>забронировали</strong> номер:<br/>
+Номер бронирования: <%=@booking.id %><br/>
 Дата заезда <%=@booking.date_in %><br/>
 Дата выезда <%=@booking.date_out %><br/>
 <%=Eating.find_by_id(@booking.eating)[:description] %><br/>

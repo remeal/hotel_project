@@ -8,43 +8,63 @@
 <section class="hero is-large">
   <h1 class="has-text-centered">Бронирование номера:</h1>
   <div class = 'form-inner'>
-  <%= form_tag(search_path, :method => "get", class: "start-search") do %>
+    <%= form_tag(search_path, :method => "get", class: "start-search") do %>
       <div class="columns">
         <div class="column is-5 is-offset-3">
-      <h3>Выберите количество человек, проживающих в номере:</h3>
+          <h3>Выберите количество человек, проживающих в номере:</h3>
         </div>
         <div class="column is-4">
-    <%= select_tag "search", options_for_select(['1', '2',
+          <%= select_tag "search", options_for_select(['1', '2',
                                                  '3', '5',
                                                  '6']), class: "dropdown-content" %>
         </div>
       </div>
         <div class="columns">
-            <div class="column is-1 is-offset-2">
-              <label class="label">
+          <div class="column is-1 is-offset-2">
+            <label class="label">
               Дата заезда
-              </label>
-            </div>
-            <div class="column is-3">
-              <div class="control">
-              <input type="date" name="date_in" id="date_in" placeholder="Дата заезда" required/>
-              </div>
-            </div>
-            <div class="column is-1">
-              <label class="label">
-              Дата выезда
-              </label>
-            </div>
+            </label>
+          </div>
           <div class="column is-3">
-              <div class="control">
-              <input type="date" name="date_out" id="date_out" placeholder="Дата выезда" required/>
-              </div>
-              </div>
+            <div class="control">
+              <input type="date" name="date_in" id="date_in" placeholder="Дата заезда" required onchange="checkDate()"/>
+            </div>
+          </div>
+          <div class="column is-1">
+            <label class="label">
+              Дата выезда
+            </label>
+          </div>
+          <div class="column is-3">
+            <div class="control">
+              <input type="date" name="date_out" id="date_out" placeholder="Дата выезда" required onchange="checkDate()"/>
+            </div>
+          </div>
           <div class="column is-2">
-            <input type="submit" name="commit" value="Найти" class = "button is-info is-rounded"/>
+            <input type="submit" name="commit" value="Найти" class = "button is-info is-rounded" id="button-search"/>
           </div>
-      <% end %>
-          </div>
+        </div>
+    <% end %>
+    <div class="columns">
+      <div class="column is-offset-8" id="not">
+
+      </div>
     </div>
+  </div>
+  <script type="text/javascript">
+    function checkDate() {
+        var datein = new Date(document.getElementById("date_in").value);
+        var dateout = new Date(document.getElementById("date_out").value);
+        var dat = datein - dateout;
+        if (dat > 0) {
+            document.getElementById("not").innerText = "Неверно введен временной промежуток";
+            document.getElementById("button-search").disabled = true;
+        }
+        else{
+            document.getElementById("not").innerText = "";
+            document.getElementById("button-search").disabled = false;
+        }
+    }
+  </script>
 </section>
 </body>
