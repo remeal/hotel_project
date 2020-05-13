@@ -20,7 +20,7 @@
             <td><%= Booking.find_by_id(guest.booking_id)[:room_id]%></td>
               <td><%=Booking.find_by_id(guest.booking_id)[:date_in] %></td>
               <td><%=Booking.find_by_id(guest.booking_id)[:date_out] %></td>
-              <td><%= button_to "Гость покидает гостиницу", {name: "type_value", value: guest.id, controller:'admin', action:'adminsafe', remote: true},{class: "button is-info is-rounded",  id: "button-search", onclick: 'changeText()'} %></td>
+              <td><%= button_to "Гость покидает гостиницу", {name: "type_value", value: guest.id, controller:'admin', action:'adminsafe', remote: true},{class: "button is-info is-rounded",  id: "button-search", onmouseout: 'changeText(this)', onclick: "loading(this)" } %></td>
             </tr>
 <% end %>
         </table>
@@ -29,11 +29,13 @@
     </div>
   </section>
   <script type="text/javascript">
-      function changeText() {
-          var str = document.getElementById("button-search").value;
-          if (str === "Гость покидает гостиницу"){
-              document.getElementById("button-search").value = "Гость покинул гостиницу";
-              document.getElementById("button-search").disabled = true;
+      function loading(btn){
+          btn.value = "Подождите...";
+      }
+      function changeText(btn) {
+          if (btn.value === "Подождите...") {
+              btn.value = "Гость покинул гостиницу";
+              btn.disabled = true;
           }
       }
   </script>

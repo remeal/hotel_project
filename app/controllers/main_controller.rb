@@ -1,6 +1,7 @@
 class MainController < ApplicationController
   before_action :authenticate_user!, only: [:booking, :success]
-  def index; end
+  def index;
+  end
 
   def search
     arr_type_id = []
@@ -60,7 +61,7 @@ class MainController < ApplicationController
     phone = params[:phone]
     sum = params[:type_value].split(' ')[4]
     room = data_check(date_in, date_out, Type.find_by_id(params[:type_value].split('')[0])[:quantity])[0]
-    @booking = Booking.create(sum: sum, room: Room.find_by_number(room), date_in: date_in, date_out: date_out, eating: Eating.find_by_id(eating), phone: phone, user: User.find_by_email(current_user.email), name: User.find_by_name(current_user.name)[:name], cancel: false)
+    @booking = Booking.create(sum: sum, room: Room.find_by_id(room), date_in: date_in, date_out: date_out, eating: Eating.find_by_id(eating), phone: phone, user: User.find_by_email(current_user.email), name: User.find_by_name(current_user.name)[:name], cancel: false)
     days = (Time.parse(date_out) - Time.parse(date_in))/86400
     for i in 0..days
       OccupiedDate.create(room: Room.find_by_id(room), date: (Time.parse(date_in) + 86400 * i))

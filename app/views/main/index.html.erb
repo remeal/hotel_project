@@ -27,7 +27,7 @@
           </div>
           <div class="column is-3">
             <div class="control">
-              <input type="date" name="date_in" id="date_in" placeholder="Дата заезда" required onchange="checkDate()"/>
+              <input type="date" name="date_in" id="date_in" placeholder="Дата заезда" required onchange="checkDate()" class="input is-rounded"/>
             </div>
           </div>
           <div class="column is-1">
@@ -37,7 +37,7 @@
           </div>
           <div class="column is-3">
             <div class="control">
-              <input type="date" name="date_out" id="date_out" placeholder="Дата выезда" required onchange="checkDate()"/>
+              <input type="date" name="date_out" id="date_out" placeholder="Дата выезда" required onchange="checkDate()" class="input is-rounded"/>
             </div>
           </div>
           <div class="column is-2">
@@ -56,7 +56,7 @@
         var datein = new Date(document.getElementById("date_in").value);
         var dateout = new Date(document.getElementById("date_out").value);
         var dat = datein - dateout;
-        if (dat > 0) {
+        if (dat >= 0) {
             document.getElementById("not").innerText = "Неверно введен временной промежуток";
             document.getElementById("button-search").disabled = true;
         }
